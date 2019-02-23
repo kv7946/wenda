@@ -1,0 +1,13 @@
+{
+  "groups": [{
+    "name": "spring.velocity",
+    "type": "com.jeremy.wenda.config.VelocityConfig",
+    "sourceType": "com.jeremy.wenda.config.VelocityConfig"
+  }],
+  "properties": [{
+    "name": "spring.velocity.properties",
+    "type": "java.util.Properties",
+    "sourceType": "com.jeremy.wenda.config.VelocityConfig"
+  }],
+  "hints": []
+}

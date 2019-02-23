@@ -1,0 +1,26 @@
+package com.jeremy.wenda.dao;
+
+import com.jeremy.wenda.model.User;
+import org.apache.ibatis.annotations.*;
+import org.springframework.stereotype.Component;
+
+@Mapper
+@Component
+public interface UserDao {
+    String TABLE_NAME="user";
+    String INSERT_FIELDS="name,password,salt,head_url";
+    String SELECT_FIELDS=" id, " + INSERT_FIELDS;
+    @Insert({"insert into ", TABLE_NAME,"(", INSERT_FIELDS,
+            ") values (#{name},#{password},#{salt},#{headUrl})"})
+    int addUser(User user);
+    @Select({"select ", SELECT_FIELDS, " from ", TABLE_NAME, " where id=#{id}"})
+    User selectById(int id);
+    @Select({"select ", SELECT_FIELDS, " from ", TABLE_NAME, " where name=#{name}"})
+    User selectByName(String userName);
+    @Update({"update ", TABLE_NAME, " set password=#{password} where name=#{name}"})
+    void updatePassword(User user);
+
+    @Delete({"delete from ", TABLE_NAME, " where id=#{id}"})
+    void deleteById(int id);
+
+}
